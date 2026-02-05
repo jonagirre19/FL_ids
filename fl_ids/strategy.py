@@ -16,6 +16,7 @@ from flwr.serverapp.strategy import FedAvg, Result
 from flwr.serverapp.strategy.strategy_utils import log_strategy_start_info
 
 from fl_ids.utils.model_loader import get_model
+import fl_ids.utils.data_loader as data_loader
 
 PROJECT_NAME = "FLOWER-Federated Learning for Intrusion Detection System"
 
@@ -46,7 +47,8 @@ class CustomFedAvg(FedAvg):
             # You could save the parameters object directly.
             # Instead we are going to apply them to a Tensorflow
             # model and save its state.
-            model = get_model()
+            _, _, X_test, _ = data_loader.get_data()
+            model =  get_model(X_test.shape[1:])
             # Save the Tensorflow model
             model.set_weights(arrays.to_numpy_ndarrays())
             # Save the Tensorflow model

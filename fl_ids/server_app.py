@@ -64,11 +64,8 @@ def main(grid: Grid, context: Context) -> None:
         evaluate_fn=global_evaluate,
     )
 
-    # 5. Guardar y mostrar resultados finales
-    if result.arrays:
-        print("\nEntrenamiento completado. Guardando modelo final...")
-        global_model.set_weights(result.arrays.to_numpy_ndarrays())
-        global_model.save("final_model.keras")
+
+    print("\n Completed training. Saving the final model...")
+    global_model.set_weights(result.arrays.to_numpy_ndarrays())
+    global_model.save("final_model.keras")
         
-        if result.metrics:
-            print(f"Métricas agregadas finales: {result.metrics}")

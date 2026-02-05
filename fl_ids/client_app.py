@@ -45,7 +45,7 @@ def train(msg: Message, context: Context):
     })
     
     # Añadimos metadatos útiles como el número de ejemplos (len(X_train))
-    content["metrics"]["num_examples"] = len(x_train)
+    content["metrics"]["num-examples"] = len(x_train)
     
     return Message(content=content, reply_to=msg)
 
@@ -68,7 +68,7 @@ def evaluate(msg: Message, context: Context):
     metrics = {
         "loss": float(loss),
         "accuracy": float(accuracy),
-        "num_examples": len(x_test),
+        "num-examples": len(x_test),
     }
     
     content = RecordDict({

@@ -1,0 +1,7 @@
+.venv
+outputs
+wandb
+.flwr
+final_model.keras
+fl_ids/__pycache__/
+fl_ids/utils/__pycache__/
