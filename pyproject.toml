@@ -29,9 +29,6 @@ clientapp = "fl_ids.client_app:app"
 num-server-rounds = 10
 local-epochs = 1
 batch-size = 64
-min-available-clients = 3
-min-fit-clients = 3
-min-evaluate-clients = 3
 fraction-train = 1.0
 fraction-evaluate = 1.0
 

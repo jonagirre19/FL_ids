@@ -36,15 +36,11 @@ def train(msg: Message, context: Context):
 
     metrics = {k: float(v[-1]) for k, v in history.history.items()}
     
-    # Construimos el contenido de la respuesta
-    # 'arrays' reemplaza al primer elemento de tu tupla (model.get_weights())
-    # 'metrics' incluye el diccionario de métricas
     content = RecordDict({
         "arrays": ArrayRecord(model.get_weights()),
         "metrics": MetricRecord(metrics)
     })
     
-    # Añadimos metadatos útiles como el número de ejemplos (len(X_train))
     content["metrics"]["num-examples"] = len(x_train)
     
     return Message(content=content, reply_to=msg)
@@ -52,9 +48,7 @@ def train(msg: Message, context: Context):
 
 @app.evaluate()
 def evaluate(msg: Message, context: Context):
-    """
-    Equivalente al método evaluate() del NumPyClient.
-    """
+
     keras.backend.clear_session()
 
     _, _, x_test, y_test = data_loader.get_data()
